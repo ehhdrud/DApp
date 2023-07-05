@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ethers } from "ethers";
 import "../styles/wallet.css";
 
 export default function Wallet() {
@@ -20,6 +21,14 @@ export default function Wallet() {
       }
     } else {
       alert("METAMASK is uninstalled");
+    }
+  }
+
+  async function connectWallet() {
+    if (typeof window.ethereum !== "undefined") {
+      await requestAccount();
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
     }
   }
 
