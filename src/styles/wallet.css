@@ -1,0 +1,35 @@
+.wallet {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wallet-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #5204bf;
+  border: 1px solid transparent;
+  border-radius: 10px;
+}
+
+.wallet-button:hover {
+  border: 1px solid white;
+}
+
+.wallet-button:active {
+  background-color: #3604bf;
+}
+
+.wallet-button p {
+  font-size: 16px;
+  color: white;
+  margin: 15px;
+}
+
+.wallet-button i {
+  font-size: 16px;
+  margin: 15px;
+  color: white;
+}
