@@ -25,11 +25,15 @@
 .wallet-button p {
   font-size: 16px;
   color: white;
-  margin: 15px;
+  margin: 10px;
 }
 
 .wallet-button i {
   font-size: 16px;
-  margin: 15px;
+  margin: 10px;
   color: white;
+}
+
+.wallet-address {
+  font-size: 16px;
 }

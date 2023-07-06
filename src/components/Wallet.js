@@ -5,6 +5,13 @@ import "../styles/wallet.css";
 export default function Wallet() {
   const [walletAddress, setWalletAddress] = useState("");
 
+  function shortenAddress(address) {
+    const shortenedAddress = address.slice(0, 5) + "..." + address.slice(-4);
+    return shortenedAddress;
+  }
+
+  const shortenedAddress = shortenAddress(walletAddress);
+
   async function requestAccount() {
     console.log("Requesting account...");
 
@@ -16,6 +23,9 @@ export default function Wallet() {
         });
         setWalletAddress(accounts[0]);
         console.log(walletAddress);
+
+        const networkId = window.ethereum.networkVersion;
+        console.log("Current network ID:", networkId);
       } catch (error) {
         console.log("Error connecting...");
       }
@@ -35,10 +45,13 @@ export default function Wallet() {
   return (
     <div className="wallet">
       <button className="wallet-button" onClick={requestAccount}>
-        <i className="bx bx-lock-open-alt"></i>
-        <p>Connect Wallet</p>
+        {walletAddress ? (
+          <i className="bx bxs-lock-open"></i>
+        ) : (
+          <i className="bx bxs-lock"></i>
+        )}
+        <p>{walletAddress ? shortenedAddress : "Connect Wallet"}</p>
       </button>
-      <p className="wallet-address">{walletAddress}</p>
     </div>
   );
 }
