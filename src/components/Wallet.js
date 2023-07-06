@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
+import Metamask from "./walletComponent/Metamask.js";
 import "../styles/wallet.css";
 
 export default function Wallet() {
@@ -45,11 +46,7 @@ export default function Wallet() {
   return (
     <div className="wallet">
       <button className="wallet-button" onClick={requestAccount}>
-        {walletAddress ? (
-          <i className="bx bxs-lock-open"></i>
-        ) : (
-          <i className="bx bxs-lock"></i>
-        )}
+        <Metamask />
         <p>{walletAddress ? shortenedAddress : "Connect Wallet"}</p>
       </button>
     </div>

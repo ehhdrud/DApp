@@ -1,4 +1,5 @@
 .wallet {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,12 +11,11 @@
   justify-content: center;
   align-items: center;
   background-color: #5204bf;
-  border: 1px solid transparent;
+  border: none;
   border-radius: 10px;
 }
 
 .wallet-button:hover {
-  border: 1px solid white;
 }
 
 .wallet-button:active {
@@ -25,6 +25,7 @@
 .wallet-button p {
   font-size: 16px;
   color: white;
+  width: 125px;
   margin: 10px;
 }
 
