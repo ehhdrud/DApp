@@ -8,10 +8,7 @@ export default function Wallet() {
   const [networkName, setNetworkName] = useState("");
 
   async function requestAccount() {
-    console.log("Requesting account...");
-
     if (window.ethereum) {
-      console.log("detected");
       try {
         const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
@@ -21,13 +18,15 @@ export default function Wallet() {
 
         const networkId = window.ethereum.networkVersion;
         const networkNames = {
-          1: "Ethereum Mainnet",
+          1: "Mainnet",
           137: "Polygon",
         };
         const name = networkNames[networkId] || "Unregistered network";
         setNetworkName(name);
         console.log("Current network name: ", name);
       } catch (error) {
+        setWalletAddress("");
+        setNetworkName("");
         console.log("Error connecting...");
       }
     } else {
@@ -40,21 +39,23 @@ export default function Wallet() {
       if (typeof window.ethereum !== "undefined") {
         await requestAccount();
 
-        // const provider = new ethers.BrowserProvider(window.ethereum);
-        // const getBalance = async (walletAddress) => {
-        //   try {
-        //     const balance = await provider.getBalance(walletAddress);
-        //     console.log("Balance:", ethers.utils.formatEther(balance));
-        //   } catch (error) {
-        //     console.log("Error:", error);
-        //   }
-        // };
-        // getBalance(walletAddress);
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const getBalance = async (walletAddress) => {
+          try {
+            const balance = await provider.getBalance(walletAddress);
+            console.log("Balance:", ethers.formatEther(balance));
+          } catch (error) {
+            console.log("Error:", error);
+          }
+        };
+        getBalance(walletAddress);
       }
     }
-
     connectWallet();
   }, []);
+
+  window.ethereum.on("accountsChanged", requestAccount);
+  window.ethereum.on("networkChanged", requestAccount);
 
   function shortenAddress(address) {
     const shortenedAddress = address.slice(0, 6) + "..." + address.slice(-4);

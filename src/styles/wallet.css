@@ -15,9 +15,6 @@
   border-radius: 10px;
 }
 
-.wallet-button:hover {
-}
-
 .wallet-button:active {
   background-color: #3604bf;
 }
