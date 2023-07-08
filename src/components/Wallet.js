@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
-import Metamask from "./walletComponent/Metamask.js";
-import "../styles/wallet.css";
+import MetamaskLogo from "./walletComponent/Metamask.js";
+import "./styles/wallet.css";
 
 export default function Wallet() {
   const [walletAddress, setWalletAddress] = useState("");
@@ -18,8 +18,8 @@ export default function Wallet() {
 
         const networkId = window.ethereum.networkVersion;
         const networkNames = {
-          1: "Mainnet",
-          137: "Polygon",
+          1: "Ethereum Mainnet",
+          137: "Polygon Mainnet",
         };
         const name = networkNames[networkId] || "Unregistered network";
         setNetworkName(name);
@@ -52,6 +52,7 @@ export default function Wallet() {
       }
     }
     connectWallet();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   window.ethereum.on("accountsChanged", requestAccount);
@@ -67,10 +68,14 @@ export default function Wallet() {
   return (
     <div className="wallet">
       <button className="wallet-button" onClick={requestAccount}>
-        <Metamask />
-        <div className="network-and-address">
+        <div className="wallet-button-items">
+          <MetamaskLogo />
           {walletAddress && <p>{networkName}</p>}
-          <p>{walletAddress ? shortenedAddress : "Connect Wallet"}</p>
+          <p>
+            {walletAddress
+              ? shortenedAddress
+              : "Connect your wallet using MetaMask !"}
+          </p>
         </div>
       </button>
     </div>

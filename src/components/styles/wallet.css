@@ -7,35 +7,32 @@
 }
 
 .wallet-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #5204bf;
+  width: 400px;
+  height: 60px;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
+  background-color: #5204bf;
 }
 
 .wallet-button:active {
   background-color: #3604bf;
 }
+
+.wallet-button-items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10px;
+}
+
 .wallet-button .network-and-address {
   display: flex;
   flex-direction: column;
 }
 
-.wallet-button .network-and-address p {
+.wallet-button p {
   font-size: 16px;
+  font-weight: bold;
   color: white;
-  width: 125px;
   margin: 5px;
-}
-
-.wallet-button i {
-  font-size: 16px;
-  margin: 10px;
-  color: white;
-}
-
-.wallet-address {
-  font-size: 16px;
 }

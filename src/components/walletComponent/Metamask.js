@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import MetaFox from "@metamask/logo";
-import "./styles/metamask.css";
 
 const MetamaskLogo = () => {
   const metaFox = useRef(null);
@@ -14,8 +13,8 @@ const MetamaskLogo = () => {
     ) {
       metaFox.current = MetaFox({
         pxNotRatio: true,
-        width: 50,
-        height: 50,
+        width: 42.5,
+        height: 42.5,
         followMouse: true,
       });
 
